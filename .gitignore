@@ -25,3 +25,6 @@ skald_lab_saves/
 *.db
 *.db2
 *.fwl
+
+# launch drafts (private)
+drafts/
