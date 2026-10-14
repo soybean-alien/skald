@@ -1,0 +1,27 @@
+# build output
+bin/
+obj/
+*.user
+*.suo
+.vs/
+.idea/
+dist/
+
+# machine-specific build paths
+*.local.props
+
+# private notes and lab setup (contain local paths / personal details)
+CLAUDE.md
+MODDING_PLAN.md
+LAB_CLIENT_MODS.md
+.claude/
+
+# never commit runtime data, configs with secrets, or game files
+*.cfg
+*.jsonl
+flags.tsv
+trusted.txt
+skald_lab_saves/
+*.db
+*.db2
+*.fwl

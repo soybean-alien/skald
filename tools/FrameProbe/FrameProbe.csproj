@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- TEST-ONLY client plugin for measuring hitches. Not part of the Skald release. -->
+  <!-- Optional and not committed: set ValheimClientDir for your machine in FrameProbe.local.props -->
+  <Import Project="FrameProbe.local.props" Condition="Exists('FrameProbe.local.props')" />
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>SkaldFrameProbe</AssemblyName>
+    <LangVersion>latest</LangVersion>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <ValheimClientDir Condition="'$(ValheimClientDir)' == ''">C:\Program Files (x86)\Steam\steamapps\common\Valheim</ValheimClientDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="BepInEx" HintPath="$(ValheimClientDir)\BepInEx\core\BepInEx.dll" Private="false" />
+    <Reference Include="UnityEngine" HintPath="$(ValheimClientDir)\valheim_Data\Managed\UnityEngine.dll" Private="false" />
+    <Reference Include="UnityEngine.CoreModule" HintPath="$(ValheimClientDir)\valheim_Data\Managed\UnityEngine.CoreModule.dll" Private="false" />
+  </ItemGroup>
+  <!-- dotnet build -c Release -p:DeployToClient=true copies the DLL into the client's BepInEx/plugins -->
+  <Target Name="DeployToClient" AfterTargets="Build" Condition="'$(DeployToClient)' == 'true'">
+    <MakeDir Directories="$(ValheimClientDir)\BepInEx\plugins\SkaldFrameProbe" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ValheimClientDir)\BepInEx\plugins\SkaldFrameProbe" />
+  </Target>
+</Project>
