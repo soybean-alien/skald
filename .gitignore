@@ -28,3 +28,6 @@ skald_lab_saves/
 
 # launch drafts (private)
 drafts/
+
+# demo gif renderer scratch
+tools/DemoGif/_work/

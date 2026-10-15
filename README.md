@@ -2,6 +2,8 @@
 
 # Skald: server audit log, boss tracker and cheat flags for Valheim
 
+![Skald in action: live boss fight, cheat flag and restart countdown (sample data)](docs/demo.gif)
+
 **Skald is a server-only mod for Valheim 1.0 dedicated servers.** It records what happens on your server, shows it on a web dashboard and helps admins catch cheaters. It also cuts the dedicated server's CPU use by about 95%.
 
 - **Players install nothing.** Unmodded PC players can join, and so can Xbox, PlayStation and Switch players on crossplay servers.
@@ -411,6 +413,8 @@ dotnet build -c Release -p:ValheimServerDir="C:\path\to\Valheim dedicated server
 # optional: also copy the DLL into that server's BepInEx/plugins/Skald/
 dotnet build -c Release -p:ValheimServerDir="C:\path\to\Valheim dedicated server" -p:DeployToLab=true
 ```
+`tools/DemoGif` re-records `docs/demo.gif` from the real dashboard page with sample data (`python tools/DemoGif/make_demo.py docs/demo.gif`; needs Chrome and Pillow).
+
 `tools/FrameProbe` is a **test-only client plugin** that logs game-client frame hitches with timestamps. It's useful for performance investigations and isn't part of the release.
 
 No game files or decompiled game code are included in this repository.
