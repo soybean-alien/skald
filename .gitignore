@@ -31,3 +31,7 @@ drafts/
 
 # demo gif renderer scratch
 tools/DemoGif/_work/
+
+# agent handoffs (private)
+CODEX_HANDOFF*.md
+AGENTS.md
